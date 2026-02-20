@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fcjr/mdm-urls/raw/main/mdm_urls.schema.json",
+  "title": "MDM URL Registry",
+  "description": "A registry of known MDM (Mobile Device Management) server URL patterns, keyed by a unique kebab-case vendor identifier.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional JSON Schema reference."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Schema version number. Incremented when the schema structure changes."
+    }
+  },
+  "required": ["version"],
+  "patternProperties": {
+    "^[a-z0-9]+(-[a-z0-9]+)*$": {
+      "type": "object",
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "description": "Display name of the MDM vendor."
+        },
+        "url_patterns": {
+          "type": "array",
+          "description": "Domain patterns found in MDM enrollment URLs. A leading '.' indicates a subdomain wildcard (e.g. '.jamfcloud.com' matches 'yourcompany.jamfcloud.com').",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "info_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to the vendor's product page or documentation."
+        }
+      },
+      "required": ["vendor", "url_patterns", "info_url"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

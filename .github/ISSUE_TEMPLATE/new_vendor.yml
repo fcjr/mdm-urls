@@ -1,0 +1,42 @@
+name: New MDM vendor request
+description: Request a new MDM vendor be added to the registry
+labels: ["new vendor"]
+body:
+  - type: input
+    id: vendor
+    attributes:
+      label: Vendor name
+      placeholder: e.g. Microsoft Intune
+    validations:
+      required: true
+  - type: input
+    id: url_patterns
+    attributes:
+      label: MDM server URL pattern(s)
+      description: Domain(s) seen in MDM enrollment output, comma-separated
+      placeholder: e.g. .example.com, mdm.example.com
+    validations:
+      required: true
+  - type: input
+    id: info_url
+    attributes:
+      label: Vendor product page or docs URL
+      placeholder: https://example.com/
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: How was the URL pattern obtained?
+      options:
+        - macOS (profiles status -type enrollment)
+        - Windows (dsregcmd /status)
+        - Vendor documentation
+        - Other (describe below)
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other details about how you obtained the URL pattern

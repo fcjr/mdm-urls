@@ -1,0 +1,92 @@
+{
+  "$schema": "./mdm_urls.schema.json",
+  "version": 1,
+  "addigy": {
+    "vendor": "Addigy",
+    "url_patterns": [
+      "mdm.addigy.com",
+      ".addigy.com"
+    ],
+    "info_url": "https://addigy.com/"
+  },
+  "fleetsmith": {
+    "vendor": "Fleetsmith",
+    "url_patterns": [
+      ".fleetsmith.com"
+    ],
+    "info_url": "https://www.apple.com/"
+  },
+  "google-endpoint-management": {
+    "vendor": "Google Endpoint Management",
+    "url_patterns": [
+      "m.google.com"
+    ],
+    "info_url": "https://support.google.com/a/answer/7400753"
+  },
+  "hexnode": {
+    "vendor": "Hexnode",
+    "url_patterns": [
+      ".hexnodemdm.com"
+    ],
+    "info_url": "https://www.hexnode.com/"
+  },
+  "jamf-pro": {
+    "vendor": "Jamf Pro",
+    "url_patterns": [
+      ".jamfcloud.com"
+    ],
+    "info_url": "https://www.jamf.com/products/jamf-pro/"
+  },
+  "jumpcloud": {
+    "vendor": "JumpCloud",
+    "url_patterns": [
+      ".jumpcloud.com"
+    ],
+    "info_url": "https://jumpcloud.com/"
+  },
+  "kandji": {
+    "vendor": "Kandji",
+    "url_patterns": [
+      ".kandji.io"
+    ],
+    "info_url": "https://www.kandji.io/"
+  },
+  "meraki-systems-manager": {
+    "vendor": "Meraki Systems Manager",
+    "url_patterns": [
+      "m.meraki.com",
+      ".meraki.com"
+    ],
+    "info_url": "https://meraki.cisco.com/products/systems-manager/"
+  },
+  "microsoft-intune": {
+    "vendor": "Microsoft Intune",
+    "url_patterns": [
+      "enrollment.manage.microsoft.com",
+      "manage.microsoft.com"
+    ],
+    "info_url": "https://learn.microsoft.com/en-us/mem/intune/"
+  },
+  "mosyle": {
+    "vendor": "Mosyle",
+    "url_patterns": [
+      ".mosyle.com"
+    ],
+    "info_url": "https://mosyle.com/"
+  },
+  "simplemdm": {
+    "vendor": "SimpleMDM",
+    "url_patterns": [
+      ".simplemdm.com"
+    ],
+    "info_url": "https://simplemdm.com/"
+  },
+  "vmware-workspace-one": {
+    "vendor": "VMware Workspace ONE",
+    "url_patterns": [
+      ".awmdm.com",
+      "ds.awmdm.com"
+    ],
+    "info_url": "https://www.omnissa.com/platform/workspace-one/"
+  }
+}

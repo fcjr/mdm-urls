@@ -1,0 +1,59 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: python3 -m json.tool mdm_urls.json > /dev/null
+
+      - name: Validate schema syntax
+        run: python3 -m json.tool mdm_urls.schema.json > /dev/null
+
+      - name: Install jsonschema
+        run: pip install jsonschema
+
+      - name: Validate against schema
+        run: |
+          python3 -c "
+          import json, jsonschema
+          schema = json.load(open('mdm_urls.schema.json'))
+          data = json.load(open('mdm_urls.json'))
+          jsonschema.validate(data, schema)
+          print(f'Valid: {len(data)} entries')
+          "
+
+      - name: Check alphabetical order by key
+        run: |
+          python3 -c "
+          import json
+          data = json.load(open('mdm_urls.json'))
+          keys = [k for k in data.keys() if not k.startswith('\$') and k != 'version']
+          assert keys == sorted(keys), \
+            f'Keys must be sorted alphabetically. Expected: {sorted(keys)}'
+          print(f'Alphabetical order: OK ({len(keys)} entries)')
+          "
+
+      - name: Check for duplicate URL patterns
+        run: |
+          python3 -c "
+          import json
+          data = json.load(open('mdm_urls.json'))
+          seen = {}
+          for key, entry in data.items():
+            if key.startswith('\$') or key == 'version':
+              continue
+            for pattern in entry['url_patterns']:
+              if pattern in seen:
+                raise AssertionError(f'Duplicate URL pattern \"{pattern}\" in \"{key}\" and \"{seen[pattern]}\"')
+              seen[pattern] = key
+          print(f'No duplicate URL patterns ({len(seen)} total)')
+          "

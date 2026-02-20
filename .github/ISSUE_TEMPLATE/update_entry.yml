@@ -1,0 +1,23 @@
+name: Update existing entry
+description: Report incorrect data or request an update to an existing vendor entry
+labels: ["update"]
+body:
+  - type: input
+    id: vendor
+    attributes:
+      label: Vendor name or key
+      placeholder: e.g. microsoft-intune
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What needs to change?
+      description: Describe the correction or update needed
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: How do you know the current data is incorrect?
